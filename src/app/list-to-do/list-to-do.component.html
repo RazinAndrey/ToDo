@@ -1,0 +1,30 @@
+<div class="add-block">
+    <input
+        class="add-input"
+        #newItem
+        (keyup.enter)="addElement(newItem.value); newItem.value = ''"
+    />
+    <button class="add-btn" (click)="addElement(newItem.value); newItem.value = ''">Add task</button>
+
+</div>
+
+<div class="create-line"></div>
+
+<div class="task">
+    @if(data.length === 0){
+        <div class="finish">Success</div>
+    }
+    <li *ngFor="let d of data; index as i" class="list">
+        <div>{{i+1}}</div>
+        <input 
+            class="edit"
+            (click)="onSelected(d)"
+            [(ngModel)]="d.description"
+            value="{{d.description}}"
+        />
+        <button class="btn-delete" (click)="removeElement(d)">
+            <img class="image" src="../../images/delete.svg"/>
+        </button>
+    </li>
+</div>
+

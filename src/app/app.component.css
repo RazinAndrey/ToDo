@@ -1,0 +1,34 @@
+.title{
+    font-size: 64px;
+    border-bottom: 3px solid #ffff;
+    margin: 35px;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.title::after{
+    position: absolute;
+    bottom: 50%;
+    left: 5px;
+    display: block;
+    width: 100px;
+    border: 1px solid white;
+    content: "";
+}
+
+.title::before{
+    position: absolute;
+    bottom: 50%;
+    right: 5px;
+    display: block;
+    width: 100px;
+    border: 1px solid white;
+    content: "";
+}
+
+@media screen and (max-width: 1110px){
+    .title::after, .title::before{
+        display: none;
+    }
+}

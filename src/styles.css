@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Racing Sans One", sans-serif;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2C2C2C;
+    padding: 20px;
+}
+
+@font-face {
+    font-family: "Racing Sans One";
+    src: url("fonts/RacingSansOne-Regular.ttf");
+}
+
+/* ::-webkit-scrollbar {
+    display: none;
+} */
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: inherit; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #444; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
