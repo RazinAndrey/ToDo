@@ -21,6 +21,8 @@
             (click)="onSelected(d)"
             [(ngModel)]="d.description"
             value="{{d.description}}"
+            (ngModelChange)="ngOnChanges()"
+            
         />
         <button class="btn-delete" (click)="removeElement(d)">
             <img class="image" src="../../images/delete.svg"/>

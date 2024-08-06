@@ -1,6 +1,6 @@
 import { IToDo } from "./to-do";
 export const DATA: IToDo[] =  [
-    {id: 1, description: 'Даня Бедник самец!'},
-    {id: 2, description: 'Даня Бедник лучший!'},
-    {id: 3, description: 'Даня Бедник ангулярщик!'},
+    {id: 1, description: 'Сходить в магазин'},
+    {id: 2, description: 'Выучить Английский'},
+    {id: 3, description: 'Погулять c собакой'},
 ];

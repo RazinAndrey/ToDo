@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IToDo } from '../to-do';
 import { DATA } from '../data';
+import { ServiceTodoService } from '../service-todo.service';
 
 @Component({
   selector: 'app-list-to-do',
@@ -15,7 +16,12 @@ import { DATA } from '../data';
 
 export class ListToDoComponent {
   // тестовые данные
-  data = DATA;
+  // data = DATA;
+
+  data: IToDo[]; 
+
+  // Внедрение HeroService
+  constructor(private todoService: ServiceTodoService) { }
 
   // выбор элемента
   selectedElement: IToDo;
@@ -25,15 +31,36 @@ export class ListToDoComponent {
 
   // добавление
   addElement(description: string){
-  // елсли нет
+    // если нет
     if (!description) return;
+    // добавляем
     this.data.unshift({
       id: Math.floor(Math.random() * 101),
       description
     });
+    // обновляем данные LocalStorage
+    this.todoService.setData(this.data)
   }
+
   // удаление
   removeElement(element: IToDo){
     this.data.splice(this.data.indexOf(element), 1);
+    // обновляем данные LocalStorage
+    this.todoService.setData(this.data)
+  }
+
+  // получаем данные
+  getData() {
+    this.data = this.todoService.getData();
+  }
+
+  // метод жизненного цикла
+  ngOnInit() {
+    this.getData();
+  }
+
+  // при изменении записываем изменнный массив объектов LocalStoreg
+  ngOnChanges() {
+    this.todoService.setData(this.data);
   }
 }
