@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; 
 
 import { IToDo } from '../to-do';
-import { DATA } from '../data';
+// import { DATA } from '../data';
 import { ServiceTodoService } from '../service-todo.service';
 
 @Component({
@@ -15,8 +15,6 @@ import { ServiceTodoService } from '../service-todo.service';
 })
 
 export class ListToDoComponent {
-  // тестовые данные
-  // data = DATA;
 
   data: IToDo[]; 
 
@@ -36,7 +34,8 @@ export class ListToDoComponent {
     // добавляем
     this.data.unshift({
       id: Math.floor(Math.random() * 101),
-      description
+      description,
+      completed: true
     });
     // обновляем данные LocalStorage
     this.todoService.setData(this.data)
@@ -63,4 +62,16 @@ export class ListToDoComponent {
   ngOnChanges() {
     this.todoService.setData(this.data);
   }
+
+  filter: 'all' | 'done' | 'not done';
+
+  filterTodo(){
+    this.getData();
+    switch(this.filter) {
+      case 'all': break;
+      case 'done': this.data = this.data.filter(item => item.completed); break;
+      case 'not done':  this.data = this.data.filter(item => !item.completed); break;
+    }
+  }
+  
 }

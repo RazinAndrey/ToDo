@@ -10,11 +10,35 @@
 
 <div class="create-line"></div>
 
+<button
+    class="btn btn-menu"
+    [class.active]="filter == 'all'"
+    (click)="filter = 'all' ; filterTodo()">
+    All
+  </button>
+
+  <button
+    class="btn btn-menu"
+    (click)="filter = 'not done'; filterTodo()">
+    To Do
+  </button>
+
+  <button
+    class="btn btn-menu"
+    [class.active]="filter == 'done'"
+    (click)="filter = 'done'; filterTodo()">
+    Done
+</button>
 <div class="task">
     @if(data.length === 0){
         <div class="finish">Success</div>
     }
     <li *ngFor="let d of data; index as i" class="list">
+        <input 
+            class="check"
+            type="checkbox" 
+            [(ngModel)]="d.completed"
+            (ngModelChange)="ngOnChanges()">
         <div>{{i+1}}</div>
         <input 
             class="edit"
